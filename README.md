@@ -27,9 +27,13 @@ The wrapper file replicates the oXygen transformation scenario using `<xsl:impor
 
 The output of the default and the wrapped transformation scenarios should be the same.
 
-The default oXygen scenario, however, produces `test.fromOxygenScenario.html` which looks as it should:
+## oXygen Transformation Scenario
+
+The default oXygen scenario produces `test.fromOxygenScenario.html` which looks as it should:
 
 ![Скриншот 2020-05-12 09.49.41](https://i.imgur.com/HARgChO.png)
+
+## Transformation using a wrapper file
 
 The wrapped scenario produces `test.withWrapper.html` which in its entirety like this:
 

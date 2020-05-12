@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/css" href="css/tei_oxygen.css"?>
+<?xml-stylesheet type="text/css" href="css/tei.lex0.odd.css"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:s="http://purl.oclc.org/dsdl/schematron"
+  xmlns:rng="http://relaxng.org/ns/structure/1.0" xmlns:xi="http://www.w3.org/2001/XInclude"
+  xml:lang="en">
+  <teiHeader>
+    <fileDesc>
+      <titleStmt>
+        <title>Testing TEI Stylesheets</title>
+        <title type="sub">Unexpected results.</title>
+      </titleStmt>
+      <publicationStmt>
+        <authority>DARIAH WG "Lexical Resources"</authority>
+      </publicationStmt>
+      <sourceDesc>
+        <p>Born digital</p>
+      </sourceDesc>
+    </fileDesc>
+  </teiHeader>
+  <text>
+    <front>
+      <divGen type="toc"/>
+    </front>
+    <body>
+      <div>
+        <head>Title</head>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+      </div>
+      <div>
+        <head>Specification</head>
+        <p>This is just a couple of rules from TEI Lex-0, not the full spec.</p>
+        <schemaSpec ident="FakeTEILex0" docLang="en" xml:lang="en">
+          <moduleRef key="gaiji" except="localName"/>
+          <moduleRef key="linking" include="seg"/>
+          <moduleRef key="dictionaries" except="entryFree superEntry re hom"/>
+          <moduleRef key="core"
+            include="author head title cit quote bibl biblStruct biblScope listBibl gloss
+            citedRange imprint analytic publisher pubPlace ref date hi editor respStmt name resp term note graphic p"/>
+            <moduleRef key="header"
+              include="teiHeader fileDesc titleStmt editionStmt extent publicationStmt sourceDesc encodingDesc projectDesc seriesStmt
+              notesStmt authority distributor idno edition funder availability licence appInfo classDecl namespace tagUsage tagsDecl rendition"/>
+              <elementSpec ident="entry" mode="change">
+                <classes mode="change">
+                  <memberOf key="model.entryPart.top" mode="add"/>
+                  <memberOf key="model.sensePart" mode="add"/>
+                </classes>
+                <content>
+                  <alternate minOccurs="1" maxOccurs="unbounded">
+                    <elementRef key="sense"/>
+                    <elementRef key="pc"/>
+                    <classRef key="model.entryPart.top"/>
+                    <classRef key="model.global"/>
+                    <classRef key="model.ptrLike"/>
+                  </alternate>
+                </content>
+                <attList>
+                  <attDef ident="xml:id" mode="change" usage="req"/>
+                  <attDef ident="xml:lang" mode="change" usage="req"/>
+                  <attDef ident="type" mode="replace" usage="req">
+                    <defaultVal>mainEntry</defaultVal>
+                    <valList mode="change" type="semi">
+                      <valItem ident="mainEntry"/>
+                      <valItem ident="wordFamily"/>
+                      <valItem ident="homonymicEntry"/>
+                      <valItem ident="relatedEntry"/>
+                    </valList>
+                  </attDef>
+                </attList>
+              </elementSpec>
+            </schemaSpec>
+
+
+          </div>
+          
+          </body>
+        </text>
+      </TEI>
